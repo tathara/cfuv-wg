@@ -1,3 +1,4 @@
+import { DataSource } from 'typeorm';
 import {
   POSTGRES_DB,
   POSTGRES_HOST,
@@ -5,9 +6,8 @@ import {
   POSTGRES_PORT,
   POSTGRES_USER,
 } from '../config';
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-export const dbConnectionOptions: TypeOrmModuleOptions = {
+export const dbConnectionOptions: DataSource = new DataSource({
   type: 'postgres',
 
   host: POSTGRES_HOST,
@@ -20,7 +20,6 @@ export const dbConnectionOptions: TypeOrmModuleOptions = {
   migrations: ['dist/db/migrations/*{.ts,.js}'],
   migrationsTableName: 'migrations',
 
-  autoLoadEntities: true,
   migrationsRun: false,
   synchronize: false,
-};
+});
