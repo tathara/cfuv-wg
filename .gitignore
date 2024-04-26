@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # ENV
 .env
+
+# FOLDER WITH WIREGUARD CONF FILES
+keys/*

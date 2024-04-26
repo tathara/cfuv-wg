@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "@types/node-telegram-bot-api": "^0.64.6",
+    "child_process": "^1.0.2",
     "node-telegram-bot-api": "^0.65.1",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.1.13",

@@ -1,5 +1,9 @@
 export enum Commands {
   START = '/start',
-  GENERATE = '/generate',
-  DELETE = '/delete',
+}
+
+export enum CommandsText {
+  ADD = '🔐 Добавить ключ',
+  KEYS = 'ℹ️ Мои ключи',
+  DELETE = '🚫 Удалить ключ',
 }

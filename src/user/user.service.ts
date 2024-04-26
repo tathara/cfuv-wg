@@ -17,11 +17,11 @@ export class UserService {
 
   public async getUser(chatId: number): Promise<User> {
     try {
-      return this.userRepo.findOne({
-        where: {
-          chatId,
-        },
-      });
+      return await this.userRepo
+        .createQueryBuilder('user')
+        .leftJoinAndSelect('user.keys', 'keys')
+        .where('chatId.id = :chatId', { chatId })
+        .getOne();
     } catch (error) {
       console.error(error);
     }
