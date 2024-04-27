@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm';
+import { DataSourceOptions } from 'typeorm';
 import {
   POSTGRES_DB,
   POSTGRES_HOST,
@@ -7,7 +7,7 @@ import {
   POSTGRES_USER,
 } from '../config';
 
-export const dbConnectionOptions: DataSource = new DataSource({
+export const dbConnectionOptions: DataSourceOptions = {
   type: 'postgres',
 
   host: POSTGRES_HOST,
@@ -22,4 +22,4 @@ export const dbConnectionOptions: DataSource = new DataSource({
 
   migrationsRun: false,
   synchronize: false,
-});
+};

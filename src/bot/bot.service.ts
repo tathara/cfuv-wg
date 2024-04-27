@@ -65,7 +65,7 @@ export class BotService {
 
       const currentUser = await this.userService.getUser(chatId);
 
-      const keyToDelete = await this.keyService.deleteKey(callback);
+      const keyToDelete = await this.keyService.deleteUsersKey(currentUser, callback);
 
       return this.bot.sendMessage(currentUser.chatId, `❗️ Ключ ${keyToDelete} успешно удален!`);
     } catch (error) {
@@ -125,7 +125,7 @@ export class BotService {
   }
 
   private async addKeyToUser(user: User): Promise<Message> {
-    const createdKey = await this.keyService.createKey(user);
+    const createdKey = await this.keyService.createKeyForUser(user);
 
     await this.bot.sendMessage(
       user.chatId,
