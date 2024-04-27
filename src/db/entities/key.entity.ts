@@ -30,6 +30,6 @@ export class Key {
     this.name = 'wg' + this.id;
 
     const keysPath = join(process.cwd() + 'keys/');
-    this.path = keysPath + this.name;
+    this.path = keysPath + this.name + '.conf';
   }
 }
