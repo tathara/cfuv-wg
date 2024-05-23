@@ -17,6 +17,7 @@ export const dbConnectionOptions: DataSourceOptions = {
   database: POSTGRES_DB,
 
   entities: ['dist/db/entities/*{.ts,.js}'],
+  subscribers: ['dist/db/subscribers/*{.ts,.js}'],
   migrations: ['dist/db/migrations/*{.ts,.js}'],
   migrationsTableName: 'migrations',
 

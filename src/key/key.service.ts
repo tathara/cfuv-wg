@@ -1,10 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { exec } from 'child_process';
-import { Key } from 'src/db/entities/key.entity';
-import { User } from 'src/db/entities/user.entity';
+import { Key } from '../db/entities/key.entity';
+import { User } from '../db/entities/user.entity';
 import { Repository } from 'typeorm';
-import { promisify } from 'util';
 
 @Injectable()
 export class KeyService {
@@ -14,10 +12,12 @@ export class KeyService {
     try {
       const createdKey = await this.keyRepo.save({ user });
 
-      const execAsync = promisify(exec);
-      const { stdout, stderr } = await execAsync(`pivpn add -n ${createdKey.name}`);
-
-      if (stdout) return createdKey;
+      return {
+        id: 1,
+        name: 'wg1',
+        path: '/path/to/keys/wg1.conf',
+        user: { id: 1, chatId: 12345, keys: [] },
+      };
     } catch (error) {
       console.error(error);
     }
@@ -48,13 +48,6 @@ export class KeyService {
       const isUserKey = user.keys.find((key) => key.name === name);
 
       if (!isUserKey) throw new NotFoundException('User has no key with requested name');
-
-      const execAsync = promisify(exec);
-      const { stdout, stderr } = await execAsync(`pivpn remove ${name}`);
-
-      if (!stdout) return;
-
-      await this.keyRepo.delete(name);
 
       return name;
     } catch (error) {

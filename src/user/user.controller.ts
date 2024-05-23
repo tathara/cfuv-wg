@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Param, Body, Delete, NotFoundException } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from 'src/db/entities/user.entity';
-import { KeyService } from 'src/key/key.service';
-import { Key } from 'src/db/entities/key.entity';
+import { User } from '../db/entities/user.entity';
+import { KeyService } from '../key/key.service';
+import { Key } from '../db/entities/key.entity';
 
 @Controller('users')
 export class UserController {

@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { KeyService } from './key.service';
-import { Key } from 'src/db/entities/key.entity';
+import { Key } from '../db/entities/key.entity';
 
 @Controller('key')
 export class KeyController {

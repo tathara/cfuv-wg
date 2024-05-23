@@ -1,5 +1,4 @@
 import {
-  BeforeInsert,
   Column,
   Entity,
   JoinColumn,
@@ -8,7 +7,6 @@ import {
   Relation,
 } from 'typeorm';
 import { User } from './user.entity';
-import { join } from 'path';
 
 @Entity('key')
 export class Key {
@@ -24,12 +22,4 @@ export class Key {
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn({ name: 'user_id' })
   user: Relation<User>;
-
-  @BeforeInsert()
-  setupNameAndPath() {
-    this.name = 'wg' + this.id;
-
-    const keysPath = join(process.cwd() + 'keys/');
-    this.path = keysPath + this.name + '.conf';
-  }
 }
